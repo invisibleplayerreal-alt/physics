@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BSU Fizika İmtahan Simulyatoru & Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glows for Modern Aesthetic -->
+  <div class="glow-bg glow-1"></div>
+  <div class="glow-bg glow-2"></div>
+
+  <div class="app-container">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <div class="logo">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="logo-icon"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span>BSU Fizika</span>
+      </div>
+      <nav class="nav-menu">
+        <button class="nav-btn active" id="btn-library" data-tab="library">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/><path d="M6 6h10"/><path d="M6 10h10"/></svg>
+          Mövzu Kitabxanası
+        </button>
+        <button class="nav-btn" id="btn-simulator" data-tab="simulator">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          İmtahan Simulyatoru
+        </button>
+        <button class="nav-btn" id="btn-mc-quiz" data-tab="mc-quiz">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Test İmtahanı (Quiz)
+        </button>
+        <button class="nav-btn" id="btn-matching" data-tab="matching">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 21v-8"/><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8z"/></svg>
+          Uyğunlaşdırma (Matching)
+        </button>
+        <button class="nav-btn" id="btn-guide" data-tab="guide">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+          Metodik Vəsait
+        </button>
+        <button class="nav-btn" id="btn-upload" data-tab="upload">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+          Material Yüklə
+        </button>
+        <button class="nav-btn" id="btn-analytics" data-tab="analytics">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Nəticələrim
+        </button>
+      </nav>
+      
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="avatar">BDU</div>
+          <div class="user-info">
+            <span class="user-name">Tələbə</span>
+            <span class="user-rank">Yeni Başlayan</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+      <!-- Top header bar -->
+      <header class="top-header">
+        <div class="welcome-text">
+          <h1 id="header-title">Mövzu Kitabxanası</h1>
+          <p id="header-desc">Öyrənmək istədiyiniz fizika mövzusunu seçin və ya yenisini əlavə edin.</p>
+        </div>
+        <div class="header-actions">
+          <div class="stat-badge">
+            <span class="label">Ümumi Xal:</span>
+            <span class="value" id="global-score">0 XP</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- library tab -->
+      <div class="tab-content active" id="tab-library">
+        <!-- Search and Filter -->
+        <div class="filter-bar">
+          <div class="search-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-input" placeholder="Mövzu axtar...">
+          </div>
+          <div class="category-filters" id="category-filters">
+            <button class="filter-tag active" data-category="all">Hamısı</button>
+            <button class="filter-tag" data-category="Mexanika">Mexanika</button>
+            <button class="filter-tag" data-category="Molekulyar Fizika">Molekulyar Fizika</button>
+            <button class="filter-tag" data-category="Termodinamika">Termodinamika</button>
+            <button class="filter-tag" data-category="Seysmik Dalğalar">Seysmik Dalğalar</button>
+            <button class="filter-tag" data-category="Geofizika tətbiqi">Geofiziki Tətbiqlər</button>
+            <button class="filter-tag" data-category="custom">Mənimkilər</button>
+          </div>
+        </div>
+
+        <!-- Materials Grid -->
+        <div class="materials-grid" id="materials-grid">
+          <!-- Dynamic material cards will be rendered here -->
+        </div>
+      </div>
+
+      <!-- simulator tab (Ticket selection view) -->
+      <div class="tab-content" id="tab-simulator">
+        <div class="simulator-intro">
+          <div class="card intro-card">
+            <div class="intro-grid">
+              <div>
+                <h2>BDU Rəsmi İmtahan Simulyatoru</h2>
+                <p>İmtahan 120 dəqiqə davam edir. Çəkilən hər biletdə proqrama aid 5 təsadüfi/müəyyən sual yer alır. Hər sual 20 bal üzərindən qiymətləndirilir. Sistem cavabları rəsmi cavab vərəqinə uyğun olaraq semantik açar sözlər və ətraflılıq baxımından yoxlayacaq.</p>
+                <div style="margin-top: 1.5rem; display: flex; gap: 1rem;">
+                  <button class="btn btn-primary" id="btn-draw-random-ticket">
+                    Təsadüfi Bilet Çək
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="exam-rules-list">
+                <h4>İmtahan Qaydaları:</h4>
+                <ul>
+                  <li>Suallar arasında sərbəst şəkildə keçid edib cavablarınızı yaza bilərsiniz.</li>
+                  <li>Vaxt bitdikdə cavablarınız avtomatik olaraq yoxlanışa göndəriləcək.</li>
+                  <li>Keçid balı 50-dir. 90+ bal A kateqoriyasıdır.</li>
+                  <li>Ətraflı formulası, fiziki tərifi və geoloji tətbiqi qeyd etmək yüksək bal gətirir.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <h3 style="margin: 2.5rem 0 1.25rem 0; font-size: 1.5rem;">İmtahan Biletləri</h3>
+        <div class="tickets-grid" id="tickets-grid">
+          <!-- BSU Exam tickets will be generated here -->
+        </div>
+      </div>
+
+      <!-- guide tab (BSU book reader) -->
+      <div class="tab-content" id="tab-guide">
+        <div class="guide-search-container">
+          <div class="search-box">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="search-icon"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="guide-search-input" placeholder="Metodik vəsaitdə və ya 40 sualda axtarış...">
+          </div>
+          <div class="guide-toggle-buttons">
+            <button class="filter-tag active" id="btn-show-rehber">1. Metodik Vəsait (7 Bölüm)</button>
+            <button class="filter-tag" id="btn-show-questions">2. İmtahan Sualları (40 Sual)</button>
+            <button class="filter-tag" id="btn-show-formulas">3. Əsas Düsturlar</button>
+          </div>
+        </div>
+
+        <!-- Accordion for Study Guide -->
+        <div class="accordion-container" id="guide-rehber-accordion">
+          <!-- BSU Guide Sections -->
+        </div>
+
+        <!-- Accordion for 40 Questions -->
+        <div class="accordion-container hidden" id="guide-questions-accordion">
+          <!-- BSU 40 Questions Answers -->
+        </div>
+
+        <!-- Formulas Table View -->
+        <div class="card formulas-card-view hidden" id="guide-formulas-view">
+          <h3>Rəsmi İmtahan Düsturları</h3>
+          <p class="card-subtitle">İmtahanda istifadə edilən əsas riyazi-fiziki düsturlar.</p>
+          <div class="table-responsive">
+            <table class="history-table">
+              <thead>
+                <tr>
+                  <th>Mövzu / Kəmiyyət</th>
+                  <th>Riyazi İfadəsi (Düstur)</th>
+                  <th>İzahlar / Qeydlər</th>
+                </tr>
+              </thead>
+              <tbody id="formulas-table-body">
+                <!-- Autogenerated formulas go here -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Upload Tab -->
+      <div class="tab-content" id="tab-upload">
+        <div class="card form-card">
+          <h2>Yeni Öyrənmə Materialı Əlavə Et</h2>
+          <p class="card-subtitle">Öyrənmək istədiyiniz mətni yapışdırın və ya PDF faylı yükləyin. Sistem avtomatik olaraq ondan suallar və açar sözlər çıxaracaq.</p>
+          
+          <!-- PDF Upload Box -->
+          <div class="pdf-upload-box" id="pdf-upload-box" style="margin-bottom: 2rem;">
+            <input type="file" id="pdf-file-input" accept=".pdf" style="display: none;">
+            <div class="pdf-upload-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+            </div>
+            <div class="pdf-upload-text">
+              <h4>PDF Faylı Yüklə</h4>
+              <p>Mətni avtomatik çıxarmaq üçün PDF faylını bura sürükləyin və ya <span>seçin</span></p>
+            </div>
+            <div id="pdf-upload-status" class="pdf-status-text hidden">Oxunur...</div>
+          </div>
+
+          <form id="upload-form">
+            <div class="form-group">
+              <label for="material-title">Mövzunun Başlığı</label>
+              <input type="text" id="material-title" required placeholder="Məsələn: Nyutonun İkinci Qanunu">
+            </div>
+            
+            <div class="form-row">
+              <div class="form-group">
+                <label for="material-category">Kateqoriya</label>
+                <select id="material-category">
+                  <option value="Mexanika">Mexanika</option>
+                  <option value="Molekulyar Fizika">Molekulyar Fizika</option>
+                  <option value="Termodinamika">Termodinamika</option>
+                  <option value="Seysmik Dalğalar">Seysmik Dalğalar</option>
+                  <option value="Geofizika tətbiqi">Geofiziki Tətbiqlər</option>
+                  <option value="Digər">Digər</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="material-desc">Qısa Təsvir (Köməkçi)</label>
+                <input type="text" id="material-desc" placeholder="Mövzunun qısa xülasəsi">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="material-content">Öyrəniləcək Mətn (Dərslik mətni, konspekt)</label>
+              <textarea id="material-content" required rows="8" placeholder="Bura öyrənəcəyiniz fizika materialını daxil edin... Məsələn: Cismə təsir edən qüvvələrin əvəzləyicisi cismin kütləsi ilə təcilinin hasilinə bərabərdir..."></textarea>
+              <div class="textarea-footer">
+                <span id="word-count-text">0 söz</span>
+                <span class="hint">Ən azı 15 söz tövsiyə olunur.</span>
+              </div>
+            </div>
+
+            <div class="form-section-divider">
+              <span>Sual-Cavab Ayarları (İstəyə bağlı)</span>
+            </div>
+
+            <div class="form-group">
+              <div class="toggle-container">
+                <input type="checkbox" id="auto-generate-questions" checked>
+                <label for="auto-generate-questions">Sualları mətndən avtomatik çıxar (Smart Parser)</label>
+              </div>
+            </div>
+
+            <div id="manual-questions-container" class="manual-questions-wrapper hidden">
+              <h3>Xüsusi Suallar Daxil Et</h3>
+              <p class="hint">Öz suallarınızı və onlara uyğun doğru cavab şablonunu daxil edə bilərsiniz.</p>
+              <div id="questions-list"></div>
+              <button type="button" class="btn btn-outline" id="btn-add-manual-q">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="12" y2="12"/></svg>
+                Yeni Sual Əlavə Et
+              </button>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary" id="btn-save-material">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Materialı Saxla
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- Analytics / History Tab -->
+      <div class="tab-content" id="tab-analytics">
+        <div class="analytics-dashboard">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon-wrapper blue">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label">Tamamlanan İmtahanlar</span>
+                <h3 id="stat-total-tests">0</h3>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon-wrapper green">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label">Ortalama Düzgünlük</span>
+                <h3 id="stat-avg-accuracy">0%</h3>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon-wrapper orange">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/></svg>
+              </div>
+              <div class="stat-details">
+                <span class="stat-label">Öyrənilən Mövzular</span>
+                <h3 id="stat-total-materials">0</h3>
+              </div>
+            </div>
+          </div>
+
+          <!-- History Table -->
+          <div class="card history-card">
+            <h2>İmtahan və Sual-Cavab Tarixçəsi</h2>
+            <p class="card-subtitle">İndiyə qədər keçdiyiniz sual-cavabların nəticələri.</p>
+            
+            <div class="table-responsive">
+              <table class="history-table">
+                <thead>
+                  <tr>
+                    <th>Növ</th>
+                    <th>Başlıq / Mövzu</th>
+                    <th>Tarix</th>
+                    <th>Düzgünlük / Bal</th>
+                    <th>Qiymət</th>
+                    <th>Əməliyyat</th>
+                  </tr>
+                </thead>
+                <tbody id="history-table-body">
+                  <tr>
+                    <td colspan="6" class="empty-table-text">Hələ heç bir imtahan verməmisiniz. Kitabxanadan mövzu seçib başlayın!</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Test İmtahanı (Quiz) Tab -->
+      <div class="tab-content" id="tab-mc-quiz">
+        <div class="quiz-intro-card card">
+          <h2>Fizika Test İmtahanı (Quiz)</h2>
+          <p class="card-subtitle">Dərslik mövzuları əsasında hazırlanmış 10 təsadüfi test sualını cavablandıraraq biliklərinizi sınayın.</p>
+          <button class="btn btn-primary" id="btn-start-mc-quiz">
+            Testi Başla
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          </button>
+        </div>
+
+        <!-- Active MC Quiz View -->
+        <div class="mc-quiz-active hidden" id="mc-quiz-active" style="margin-top: 1.5rem;">
+          <div class="mc-quiz-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <span class="mc-quiz-progress" style="font-weight: 600;">Sual: <strong id="mc-current-q">1</strong> / 10</span>
+            <div class="mc-progress-bar-container" style="flex-grow: 1; max-width: 300px; height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; margin-left: 1rem;">
+              <div class="mc-progress-bar-fill" id="mc-progress-fill" style="width: 10%; height: 100%; background: var(--color-primary); transition: width var(--transition-fast);"></div>
+            </div>
+          </div>
+          
+          <div class="card mc-question-card" style="margin-bottom: 2rem;">
+            <h3 id="mc-question-text" style="font-size: 1.4rem; margin-bottom: 2rem; line-height: 1.4;">Sual buraya yazılacaq?</h3>
+            <div class="mc-options-grid" id="mc-options-grid" style="display: grid; grid-template-columns: 1fr; gap: 1rem;">
+              <!-- Options buttons will be rendered here -->
+            </div>
+          </div>
+          
+          <div class="mc-quiz-actions" style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="btn btn-outline" id="btn-exit-mc-quiz">Çıxış</button>
+            <button class="btn btn-primary hidden" id="btn-next-mc-q">Növbəti Sual</button>
+          </div>
+        </div>
+
+        <!-- MC Quiz Results View -->
+        <div class="mc-quiz-results hidden" id="mc-quiz-results" style="margin-top: 1.5rem;">
+          <div class="card completion-card" style="text-align: center; padding: 3rem;">
+            <div class="completion-icon" id="mc-result-icon" style="font-size: 3.5rem; margin-bottom: 1.5rem;">🏆</div>
+            <h2 id="mc-result-title" style="font-size: 2rem; margin-bottom: 0.5rem;">Test tamamlandı!</h2>
+            <p class="card-subtitle" id="mc-result-subtitle" style="margin-bottom: 2rem;">10 sualdan 8-ni doğru cavablandırdınız.</p>
+            <div class="total-results-summary" style="display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem;">
+              <div class="result-tile" style="background: rgba(0,0,0,0.15); padding: 1rem 2rem; border-radius: 12px; min-width: 100px;">
+                <span class="tile-label" style="display: block; font-size: 0.8rem; color: var(--text-muted);">Doğru</span>
+                <span class="tile-value text-green" id="mc-correct-count" style="font-size: 1.8rem; font-weight: 700; color: var(--color-success);">0</span>
+              </div>
+              <div class="result-tile" style="background: rgba(0,0,0,0.15); padding: 1rem 2rem; border-radius: 12px; min-width: 100px;">
+                <span class="tile-label" style="display: block; font-size: 0.8rem; color: var(--text-muted);">Yanlış</span>
+                <span class="tile-value text-red" id="mc-wrong-count" style="font-size: 1.8rem; font-weight: 700; color: var(--color-danger);">0</span>
+              </div>
+              <div class="result-tile" style="background: rgba(0,0,0,0.15); padding: 1rem 2rem; border-radius: 12px; min-width: 100px;">
+                <span class="tile-label" style="display: block; font-size: 0.8rem; color: var(--text-muted);">Nəticə</span>
+                <span class="tile-value text-blue" id="mc-score-pct" style="font-size: 1.8rem; font-weight: 700; color: var(--color-secondary);">0%</span>
+              </div>
+            </div>
+            <div class="points-awarded" id="mc-points-awarded" style="font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--color-gold);">Qazanılan Xal: <strong>+0 XP</strong></div>
+            <div class="completion-actions" style="display: flex; justify-content: center; gap: 1rem;">
+              <button class="btn btn-outline" id="btn-retry-mc-quiz">Yenidən Sına</button>
+              <button class="btn btn-primary" id="btn-finish-mc-quiz">Kitabxanaya Qayıt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Uyğunlaşdırma (Matching) Tab -->
+      <div class="tab-content" id="tab-matching">
+        <div class="matching-intro-card card">
+          <h2>Fiziki Anlayışlar və Düsturlar Uyğunlaşdırılması</h2>
+          <p class="card-subtitle">Sol sütundakı fiziki anlayışı sağ sütundakı müvafiq düstur və ya təriflə uyğunlaşdırın. Hər düzgün cavab xal qazandırır!</p>
+          <button class="btn btn-primary" id="btn-start-matching">
+            Oyunu Başla
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 3h5v5"/><path d="M8 3H3v5"/><path d="M12 21v-8"/></svg>
+          </button>
+        </div>
+
+        <!-- Active Matching View -->
+        <div class="matching-active hidden" id="matching-active" style="margin-top: 1.5rem;">
+          <div class="matching-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+            <span class="matching-score" style="font-size: 1.1rem; font-weight: 600;">Cütlər: <strong id="matching-current-score" style="color: var(--color-success);">0</strong> / 5</span>
+            <span class="matching-timer" style="font-size: 1.1rem; font-weight: 600;">Vaxt: <strong id="matching-timer-sec" style="color: var(--color-warning);">30</strong> san</span>
+          </div>
+          
+          <div class="matching-game-container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-bottom: 2.5rem;">
+            <div class="matching-column" id="matching-left-col" style="display: flex; flex-direction: column; gap: 1rem;">
+              <!-- Left items (terms) -->
+            </div>
+            <div class="matching-column" id="matching-right-col" style="display: flex; flex-direction: column; gap: 1rem;">
+              <!-- Right items (definitions/formulas) -->
+            </div>
+          </div>
+          
+          <div class="matching-actions" style="display: flex; justify-content: flex-end;">
+            <button class="btn btn-outline" id="btn-exit-matching">Çıxış</button>
+          </div>
+        </div>
+
+        <!-- Matching Results View -->
+        <div class="matching-results hidden" id="matching-results" style="margin-top: 1.5rem;">
+          <div class="card completion-card" style="text-align: center; padding: 3rem;">
+            <div class="completion-icon" id="matching-result-icon" style="font-size: 3.5rem; margin-bottom: 1.5rem;">🎯</div>
+            <h2 id="matching-result-title" style="font-size: 2rem; margin-bottom: 0.5rem;">Oyun Bitdi!</h2>
+            <p class="card-subtitle" id="matching-result-subtitle" style="margin-bottom: 2rem;">5 cütdən 4-nü uğurla uyğunlaşdırdınız.</p>
+            <div class="points-awarded" id="matching-points-awarded" style="font-size: 1.2rem; margin-bottom: 2.5rem; color: var(--color-gold);">Qazanılan Xal: <strong>+0 XP</strong></div>
+            <div class="completion-actions" style="display: flex; justify-content: center; gap: 1rem;">
+              <button class="btn btn-outline" id="btn-retry-matching">Yenidən Oyna</button>
+              <button class="btn btn-primary" id="btn-finish-matching">Kitabxanaya Qayıt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Study Quiz Container (Topic quiz) -->
+      <div class="quiz-container hidden" id="quiz-container">
+        <div class="quiz-header">
+          <div class="quiz-title-section">
+            <button class="btn-back" id="btn-exit-quiz">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              Çıxış
+            </button>
+            <div>
+              <h2 id="quiz-material-title">Mövzu Başlığı</h2>
+              <span class="badge" id="quiz-material-category">Kateqoriya</span>
+            </div>
+          </div>
+          <div class="quiz-progress-section">
+            <span class="progress-text">Sual: <strong id="current-q-num">1</strong> / <span id="total-q-num">5</span></span>
+            <div class="progress-bar-container">
+              <div class="progress-bar-fill" id="quiz-progress-fill" style="width: 20%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-body" id="quiz-question-view">
+          <div class="card question-card">
+            <div class="question-number-badge">Sual <span id="q-num-label">1</span></div>
+            <h3 class="question-text" id="question-text">Sual mətri?</h3>
+          </div>
+
+          <div class="answer-section">
+            <div class="answer-header">
+              <label for="user-answer-input">Sizin Cavabınız:</label>
+              <span class="word-counter" id="answer-word-counter">0 söz / min 10 tövsiyə olunur</span>
+            </div>
+            <textarea id="user-answer-input" rows="6" placeholder="Mövzuya uyğun ətraflı cavabınızı bura yazın. Açar sözləri qeyd etməyi unutmayın..."></textarea>
+            
+            <div class="quiz-actions">
+              <button class="btn btn-outline" id="btn-quiz-skip">Ötür</button>
+              <button class="btn btn-primary" id="btn-quiz-submit">Cavabı Qiymətləndir</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question Evaluation Panel -->
+        <div class="feedback-panel hidden" id="feedback-panel">
+          <div class="card feedback-card">
+            <h3>Sualın Qiymətləndirilməsi</h3>
+            
+            <div class="scores-container">
+              <div class="score-ring-wrapper">
+                <svg class="score-ring" width="100" height="100">
+                  <circle class="score-ring-circle-bg" cx="50" cy="50" r="40" />
+                  <circle class="score-ring-circle" id="ring-accuracy" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" />
+                </svg>
+                <div class="score-ring-text">
+                  <span class="score-val" id="val-accuracy">0%</span>
+                  <span class="score-lbl">Düzgünlük</span>
+                </div>
+              </div>
+              
+              <div class="score-ring-wrapper">
+                <svg class="score-ring" width="100" height="100">
+                  <circle class="score-ring-circle-bg" cx="50" cy="50" r="40" />
+                  <circle class="score-ring-circle" id="ring-volume" cx="50" cy="50" r="40" stroke-dasharray="251.2" stroke-dashoffset="251.2" />
+                </svg>
+                <div class="score-ring-text">
+                  <span class="score-val" id="val-volume">0%</span>
+                  <span class="score-lbl">Həcm</span>
+                </div>
+              </div>
+
+              <div class="overall-badge-container">
+                <span class="overall-label">Qiymət</span>
+                <span class="overall-grade" id="val-grade">F</span>
+                <span class="overall-score-text" id="val-overall-score">0 / 100 xal</span>
+              </div>
+            </div>
+
+            <div class="analysis-details">
+              <div class="analysis-section">
+                <h4>Əsas Terminlərin Təhlili</h4>
+                <div class="keyword-tags" id="keyword-tags-container"></div>
+              </div>
+              <div class="analysis-section">
+                <h4>Sistem Rəyi</h4>
+                <p class="feedback-text-desc" id="feedback-text-desc"></p>
+              </div>
+              <div class="comparison-boxes">
+                <div class="comp-box user-answer">
+                  <h5>Sizin Cavabınız</h5>
+                  <div class="comp-content" id="display-user-answer"></div>
+                </div>
+                <div class="comp-box expected-answer">
+                  <h5>Gözlənilən Doğru Cavab</h5>
+                  <div class="comp-content" id="display-expected-answer"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="feedback-actions">
+              <button class="btn btn-primary" id="btn-next-question">Növbəti Suala Keç</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Completion View -->
+        <div class="quiz-completion hidden" id="quiz-completion-view">
+          <div class="card completion-card">
+            <div class="completion-icon">🏆</div>
+            <h2>Mükəmməl! Mövzu bitdi</h2>
+            <p class="card-subtitle" id="completion-subtitle"></p>
+            <div class="total-results-summary">
+              <div class="result-tile">
+                <span class="tile-label">Düzgünlük</span>
+                <span class="tile-value text-green" id="total-val-accuracy">0%</span>
+              </div>
+              <div class="result-tile">
+                <span class="tile-label">Həcm</span>
+                <span class="tile-value text-blue" id="total-val-volume">0%</span>
+              </div>
+              <div class="result-tile">
+                <span class="tile-label">Ümumi Qiymət</span>
+                <span class="tile-value text-gold" id="total-val-grade">A</span>
+              </div>
+            </div>
+            <div class="points-awarded">Qazanılan Xal: <strong id="total-points-added">0 XP</strong></div>
+            <div class="completion-actions">
+              <button class="btn btn-outline" id="btn-completion-retry">Yenidən Sına</button>
+              <button class="btn btn-primary" id="btn-completion-finish">Kitabxanaya Qayıt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Active Exam Simulator Container (5 Questions ticket) -->
+      <div class="quiz-container hidden" id="exam-simulator-container">
+        <!-- Exam Header -->
+        <div class="exam-header-bar">
+          <div class="exam-info-panel">
+            <button class="btn-back" id="btn-exit-exam" style="background-color: rgba(239, 68, 68, 0.1); color: var(--color-danger); border-color: rgba(239, 68, 68, 0.2);">
+              İmtahandan Çıx
+            </button>
+            <div>
+              <h2 id="exam-ticket-title">Bilet № 1</h2>
+              <span class="badge badge-purple">BDU RƏSMİ İMTAHAN</span>
+            </div>
+          </div>
+          
+          <div class="exam-timer-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="timer-icon"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span id="exam-timer-clock">120:00</span>
+          </div>
+        </div>
+
+        <!-- Question Navigator (1 to 5) -->
+        <div class="exam-question-navigator">
+          <span class="nav-label">Suallar:</span>
+          <div class="nav-dots" id="exam-nav-dots">
+            <button class="nav-dot active" data-q-index="0">1</button>
+            <button class="nav-dot" data-q-index="1">2</button>
+            <button class="nav-dot" data-q-index="2">3</button>
+            <button class="nav-dot" data-q-index="3">4</button>
+            <button class="nav-dot" data-q-index="4">5</button>
+          </div>
+        </div>
+
+        <!-- Active Exam Question Screen -->
+        <div class="exam-body" id="exam-question-screen">
+          <div class="card question-card" style="border-left-color: var(--color-primary);">
+            <div class="question-number-badge" style="background-color: var(--color-primary-glow); color: var(--color-primary);">
+              Sual <span id="exam-q-num-label">1</span> / 5
+            </div>
+            <h3 class="question-text" id="exam-question-text">Mexaniki hərəkət. Maddi nöqtə, yol və yerdəyişmə.</h3>
+          </div>
+
+          <div class="answer-section">
+            <div class="answer-header">
+              <label for="exam-answer-input">Sualın Cavabı (Qaralama real vaxtda yadda saxlanılır):</label>
+              <span class="word-counter" id="exam-answer-word-counter">0 söz</span>
+            </div>
+            <textarea id="exam-answer-input" rows="8" placeholder="Sualın ətraflı cavabını bura yazın. Açar sözləri, düsturları və tətbiqləri qeyd etməyi unutmayın..."></textarea>
+            
+            <div class="exam-nav-actions">
+              <button class="btn btn-outline" id="btn-exam-prev">← Əvvəlki Sual</button>
+              <button class="btn btn-outline" id="btn-exam-next">Növbəti Sual →</button>
+              <button class="btn btn-primary" id="btn-exam-submit-all" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);">
+                İmtahanı Bitir
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Exam Transcript Results View -->
+        <div class="exam-results-screen hidden" id="exam-results-screen">
+          <div class="card completion-card">
+            <div class="completion-icon" style="background: linear-gradient(135deg, var(--color-primary), var(--color-secondary)); box-shadow: 0 10px 25px rgba(99, 102, 241, 0.4);">📊</div>
+            <h2>İmtahan Protokolu (Transkript)</h2>
+            <p class="card-subtitle" id="exam-results-subtitle">Bilet № 1 imtahanı tamamlandı.</p>
+            
+            <div class="total-results-summary">
+              <div class="result-tile">
+                <span class="tile-label">Yekun Bal</span>
+                <span class="tile-value text-green" id="exam-total-score">0 / 100</span>
+              </div>
+              <div class="result-tile">
+                <span class="tile-label">Düzgünlük</span>
+                <span class="tile-value text-blue" id="exam-avg-accuracy">0%</span>
+              </div>
+              <div class="result-tile">
+                <span class="tile-label">Qiymət</span>
+                <span class="tile-value text-gold" id="exam-final-grade">F</span>
+              </div>
+            </div>
+
+            <!-- Individual Questions Score breakdown -->
+            <div class="exam-breakdown-section">
+              <h3>Suallar Üzrə Qiymətlər:</h3>
+              <div class="exam-questions-list" id="exam-questions-score-list">
+                <!-- 5 questions listing with scores -->
+              </div>
+            </div>
+
+            <!-- Active Question Detailed Inspector -->
+            <div class="exam-active-inspector hidden" id="exam-active-inspector">
+              <div class="card feedback-card" style="background-color: rgba(0,0,0,0.15); margin-top:2rem;">
+                <h4 id="inspector-q-title">Seçilmiş Sualın Yoxlanış Detalları</h4>
+                <div class="scores-container" style="background:none; border:none; padding:1rem 0;">
+                  <div class="score-ring-wrapper">
+                    <svg class="score-ring" width="80" height="80">
+                      <circle class="score-ring-circle-bg" cx="40" cy="40" r="32" />
+                      <circle class="score-ring-circle" id="inspect-ring-accuracy" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="201" stroke="var(--color-success)" />
+                    </svg>
+                    <div class="score-ring-text">
+                      <span class="score-val" id="inspect-val-accuracy" style="font-size:1.1rem;">0%</span>
+                      <span class="score-lbl" style="font-size:0.55rem;">Düzgünlük</span>
+                    </div>
+                  </div>
+                  <div class="score-ring-wrapper">
+                    <svg class="score-ring" width="80" height="80">
+                      <circle class="score-ring-circle-bg" cx="40" cy="40" r="32" />
+                      <circle class="score-ring-circle" id="inspect-ring-volume" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="201" stroke="var(--color-primary)" />
+                    </svg>
+                    <div class="score-ring-text">
+                      <span class="score-val" id="inspect-val-volume" style="font-size:1.1rem;">0%</span>
+                      <span class="score-lbl" style="font-size:0.55rem;">Həcm</span>
+                    </div>
+                  </div>
+                  <div class="overall-badge-container">
+                    <span class="overall-label">Qazanılan Bal</span>
+                    <span class="overall-score-text" id="inspect-q-score" style="font-size:1.5rem; color: var(--color-success);">0 / 20</span>
+                  </div>
+                </div>
+
+                <div class="analysis-details">
+                  <div class="analysis-section" style="border-top:none; padding-top:0;">
+                    <h5>Əsas Terminlər</h5>
+                    <div class="keyword-tags" id="inspect-keyword-tags"></div>
+                  </div>
+                  <div class="comparison-boxes">
+                    <div class="comp-box user-answer">
+                      <h5>Sizin Cavabınız</h5>
+                      <div class="comp-content" id="inspect-user-answer" style="font-size:0.85rem;"></div>
+                    </div>
+                    <div class="comp-box expected-answer">
+                      <h5>Gözlənilən Doğru Cavab</h5>
+                      <div class="comp-content" id="inspect-expected-answer" style="font-size:0.85rem;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="completion-actions" style="margin-top:2.5rem;">
+              <button class="btn btn-outline" id="btn-exam-completion-retry">Bileti Yenidən İşlə</button>
+              <button class="btn btn-primary" id="btn-exam-completion-finish">İmtahanlar Menyusuna Qayıt</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Detailed View Modal for Materials -->
+  <div class="modal-overlay hidden" id="material-detail-modal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <div>
+          <h2 id="modal-material-title">Mövzu Başlığı</h2>
+          <span class="badge" id="modal-material-category">Kateqoriya</span>
+        </div>
+        <button class="btn-close-modal" id="btn-close-modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="material-full-text">
+          <h3>Mövzunun Mətni</h3>
+          <div class="text-content" id="modal-material-content"></div>
+        </div>
+        
+        <div class="material-stats-preview">
+          <div class="stat-mini">
+            <span class="lbl">Sualların sayı:</span>
+            <span class="val" id="modal-questions-count">0 sual</span>
+          </div>
+          <div class="stat-mini">
+            <span class="lbl">Çətinlik:</span>
+            <span class="val">Orta</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-outline" id="btn-delete-material">Bu Materialı Sil</button>
+        <button class="btn btn-primary" id="btn-start-study">Məşqə Başla</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+  <script src="sample_data.js"></script>
+  <script src="extracted_data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
